@@ -20,21 +20,23 @@
     var CONFIG = {"hostname":"xhkzdepartedream.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="[!info]author: xhkzdepartedreamdate: 2025.11.20  齐次坐标与变换矩阵1 如何理解雅可比矩阵 雅可比矩阵是对非线性变换的局部线性近似。  1.1 从一维线性化开始在一维函数里，如果你有$y &#x3D; f(x)$，在某个点 $x_0$ 处，你可以用泰勒展开近似它：$$f(x)\approx f(x_0) + f’(x_0) \cdot (x - x">
+  <meta name="description" content="[!info]author: xhkzdepartedreamdate: 2025.11.20  齐次坐标与变换矩阵1 如何理解雅可比矩阵 雅可比矩阵是对非线性变换的局部线性近似。 1.1 从一维线性化开始在一维函数里，如果你有$y &#x3D; f(x)$，在某个点 $x_0$ 处，你可以用泰勒展开近似它： f(x)\approx f(x_0) + f&#39;(x_0) \cdot (x - x_0)这里 $">
 <meta property="og:type" content="article">
-<meta property="og:title" content="xhkzdepartedream">
+<meta property="og:title" content="Hello World">
 <meta property="og:url" content="https://xhkzdepartedream.github.io/2025/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="xhkzdepartedream">
-<meta property="og:description" content="[!info]author: xhkzdepartedreamdate: 2025.11.20  齐次坐标与变换矩阵1 如何理解雅可比矩阵 雅可比矩阵是对非线性变换的局部线性近似。  1.1 从一维线性化开始在一维函数里，如果你有$y &#x3D; f(x)$，在某个点 $x_0$ 处，你可以用泰勒展开近似它：$$f(x)\approx f(x_0) + f’(x_0) \cdot (x - x">
+<meta property="og:description" content="[!info]author: xhkzdepartedreamdate: 2025.11.20  齐次坐标与变换矩阵1 如何理解雅可比矩阵 雅可比矩阵是对非线性变换的局部线性近似。 1.1 从一维线性化开始在一维函数里，如果你有$y &#x3D; f(x)$，在某个点 $x_0$ 处，你可以用泰勒展开近似它： f(x)\approx f(x_0) + f&#39;(x_0) \cdot (x - x_0)这里 $">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xhkzdepartedream.github.io/assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets-.png">
+<meta property="og:image" content="https://xhkzdepartedream.github.io/2025/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets-%203.png">
+<meta property="og:image" content="https://xhkzdepartedream.github.io/2025/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets-%201.png">
+<meta property="og:image" content="https://xhkzdepartedream.github.io/2025/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets-.png">
 <meta property="article:published_time" content="2025-11-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-02-03T15:22:32.520Z">
+<meta property="article:modified_time" content="2026-02-03T15:24:08.894Z">
 <meta property="article:author" content="xhkzdepartedream">
 <meta property="article:tag" content="topic&#x2F;计算机图形学&#x2F;三维视觉">
 <meta property="article:tag" content="type&#x2F;笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xhkzdepartedream.github.io/assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets-.png">
+<meta name="twitter:image" content="https://xhkzdepartedream.github.io/2025/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets-%203.png">
 
 <link rel="canonical" href="https://xhkzdepartedream.github.io/2025/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/">
 
@@ -49,7 +51,7 @@
   };
 </script>
 
-  <title> | xhkzdepartedream</title>
+  <title>Hello World | xhkzdepartedream</title>
   
 
 
@@ -175,7 +177,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          Hello World
         </h1>
 
         <div class="post-meta">
@@ -192,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-02-03 23:22:32" itemprop="dateModified" datetime="2026-02-03T23:22:32+08:00">2026-02-03</time>
+                <time title="修改时间：2026-02-03 23:24:08" itemprop="dateModified" datetime="2026-02-03T23:24:08+08:00">2026-02-03</time>
               </span>
 
           
@@ -211,18 +213,38 @@
 </blockquote>
 <h1 id="齐次坐标与变换矩阵"><a href="#齐次坐标与变换矩阵" class="headerlink" title="齐次坐标与变换矩阵"></a>齐次坐标与变换矩阵</h1><h2 id="1-如何理解雅可比矩阵"><a href="#1-如何理解雅可比矩阵" class="headerlink" title="1 如何理解雅可比矩阵"></a>1 如何理解雅可比矩阵</h2><blockquote>
 <p>雅可比矩阵是对非线性变换的局部线性近似。</p>
-</blockquote>
-<h3 id="1-1-从一维线性化开始"><a href="#1-1-从一维线性化开始" class="headerlink" title="1.1 从一维线性化开始"></a>1.1 从一维线性化开始</h3><p>在一维函数里，如果你有$y &#x3D; f(x)$，在某个点 $x_0$ 处，你可以用泰勒展开近似它：<br>$$f(x)\approx f(x_0) + f’(x_0) \cdot (x - x_0)$$<br>这里 $f’(x_0)$ 就是该点的斜率，表示在<strong>局部</strong>看起来，这个非线性函数几乎是条直线。</p>
-<h3 id="1-2-多维情形下的“斜率”"><a href="#1-2-多维情形下的“斜率”" class="headerlink" title="1.2 多维情形下的“斜率”"></a>1.2 多维情形下的“斜率”</h3><p>如果你有一个从 $\mathbb{R}^n$ 到 $\mathbb{R}^m$ 的非线性变换：$\mathbf{y} &#x3D; \mathbf{f}(\mathbf{x})$，那么“一阶导数”不再是单个数，而是一个<strong>矩阵</strong>，它把输入的微小变化 $\Delta \mathbf{x}$ 映射到输出的变化 $\Delta \mathbf{y}$：<br>$\Delta \mathbf{y} \approx J_{\mathbf{f}}(\mathbf{x}<em>0) \cdot \Delta \mathbf{x}$<br>这个矩阵 $J</em>{\mathbf{f}}$ 就是<strong>雅可比矩阵</strong>。</p>
-<h3 id="1-3-雅可比矩阵的定义"><a href="#1-3-雅可比矩阵的定义" class="headerlink" title="1.3 雅可比矩阵的定义"></a>1.3 雅可比矩阵的定义</h3><p>$$<br>J_{\mathbf{f}}(\mathbf{x}_0) &#x3D; \begin{bmatrix} \frac{\partial f_1}{\partial x_1} &amp; \cdots &amp; \frac{\partial f_1}{\partial x_n} \ \vdots &amp; \ddots &amp; \vdots \ \frac{\partial f_m}{\partial x_1} &amp; \cdots &amp; \frac{\partial f_m}{\partial x_n} \end{bmatrix}<br>$$</p>
-<p>每一行是一个输出分量对所有输入分量的偏导，它告诉你在该点附近，函数的变化趋势是什么</p>
-<h3 id="1-4-“局部线性近似”是什么意思"><a href="#1-4-“局部线性近似”是什么意思" class="headerlink" title="1.4 “局部线性近似”是什么意思"></a>1.4 “局部线性近似”是什么意思</h3><p>如果你放大到足够小的范围，非线性变换在某个点附近的行为可以<strong>近似为一个线性映射</strong>：<br>$$<br>\mathbf{f}(\mathbf{x}) \approx \mathbf{f}(\mathbf{x}<em>0) + J</em>{\mathbf{f}}(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0)<br>$$<br>这里的</p>
+<h3 id="1-1-从一维线性化开始"><a href="#1-1-从一维线性化开始" class="headerlink" title="1.1 从一维线性化开始"></a>1.1 从一维线性化开始</h3><p>在一维函数里，如果你有$y = f(x)$，在某个点 $x_0$ 处，你可以用泰勒展开近似它：</p>
+<script type="math/tex; mode=display">f(x)\approx f(x_0) + f'(x_0) \cdot (x - x_0)</script><p>这里 $f’(x_0)$ 就是该点的斜率，表示在<strong>局部</strong>看起来，这个非线性函数几乎是条直线。</p>
+<h3 id="1-2-多维情形下的“斜率”"><a href="#1-2-多维情形下的“斜率”" class="headerlink" title="1.2 多维情形下的“斜率”"></a>1.2 多维情形下的“斜率”</h3><p>如果你有一个从 $\mathbb{R}^n$ 到 $\mathbb{R}^m$ 的非线性变换：$\mathbf{y} = \mathbf{f}(\mathbf{x})$，那么“一阶导数”不再是单个数，而是一个<strong>矩阵</strong>，它把输入的微小变化 $\Delta \mathbf{x}$ 映射到输出的变化 $\Delta \mathbf{y}$：<br>$\Delta \mathbf{y} \approx J_{\mathbf{f}}(\mathbf{x}_0) \cdot \Delta \mathbf{x}$<br>这个矩阵 $J_{\mathbf{f}}$ 就是<strong>雅可比矩阵</strong>。</p>
+<h3 id="1-3-雅可比矩阵的定义"><a href="#1-3-雅可比矩阵的定义" class="headerlink" title="1.3 雅可比矩阵的定义"></a>1.3 雅可比矩阵的定义</h3></blockquote>
+<script type="math/tex; mode=display">
+J_{\mathbf{f}}(\mathbf{x}_0) = \begin{bmatrix} \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\ \vdots & \ddots & \vdots \\ \frac{\partial f_m}{\partial x_1} & \cdots & \frac{\partial f_m}{\partial x_n} \end{bmatrix}</script><p>每一行是一个输出分量对所有输入分量的偏导，它告诉你在该点附近，函数的变化趋势是什么</p>
+<h3 id="1-4-“局部线性近似”是什么意思"><a href="#1-4-“局部线性近似”是什么意思" class="headerlink" title="1.4 “局部线性近似”是什么意思"></a>1.4 “局部线性近似”是什么意思</h3><p>如果你放大到足够小的范围，非线性变换在某个点附近的行为可以<strong>近似为一个线性映射</strong>：</p>
+<script type="math/tex; mode=display">
+\mathbf{f}(\mathbf{x}) \approx \mathbf{f}(\mathbf{x}_0) + J_{\mathbf{f}}(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0)</script><p>这里的</p>
 <ul>
 <li>常数项 $\mathbf{f}(\mathbf{x}_0)$ 负责平移</li>
-<li>雅可比矩阵 $J$ 负责线性变换（旋转、缩放、剪切等）</li>
+<li>雅可比矩阵 $J$ 负责线性变换（旋转、缩放、剪切等）<h2 id="2-齐次坐标"><a href="#2-齐次坐标" class="headerlink" title="2 齐次坐标"></a>2 齐次坐标</h2>以二维为例，仅用二维向量的矩阵乘法只能实现旋转、缩放等，但加入额外的一行一列可以完全仅由矩阵乘法实现平移：<script type="math/tex; mode=display">
+\left[\
+\begin{array}{}
+1 & 0 & d_x\\
+0 & 1 & d_y\\
+0 & 0 & \ 1
+\end{array}
+\right] \cdot 
+\left[\
+\begin{array}{}
+x\\y\\1
+\end{array}
+\right] = 
+\left[\
+\begin{array}{}
+x+d_x\\
+y+d_y\\ 
+1
+\end{array}
+\right]</script>而如果将向量的最后一维设为0，则可以禁用其平移功能。<h2 id="3-渲染流程"><a href="#3-渲染流程" class="headerlink" title="3 渲染流程"></a>3 渲染流程</h2><h3 id="3-1-Intro"><a href="#3-1-Intro" class="headerlink" title="3.1 Intro"></a>3.1 Intro</h3>假设你要拍一张 3D 场景的照片，过程里有三次“变换”：</li>
 </ul>
-<h2 id="2-齐次坐标"><a href="#2-齐次坐标" class="headerlink" title="2 齐次坐标"></a>2 齐次坐标</h2><p>以二维为例，仅用二维向量的矩阵乘法只能实现旋转、缩放等，但加入额外的一行一列可以完全仅由矩阵乘法实现平移：<br>$$<br>\left[<br>\begin{array}{}<br>1 &amp; 0 &amp; d_x\<br>0 &amp; 1 &amp; d_y\<br>0 &amp; 0 &amp; \ 1<br>\end{array}<br>\right] \cdot<br>\left[<br>\begin{array}{}<br>x\y\1<br>\end{array}<br>\right] &#x3D;<br>\left[<br>\begin{array}{}<br>x+d_x\<br>y+d_y\<br>1<br>\end{array}<br>\right]<br>$$<br>而如果将向量的最后一维设为0，则可以禁用其平移功能。</p>
-<h2 id="3-渲染流程"><a href="#3-渲染流程" class="headerlink" title="3 渲染流程"></a>3 渲染流程</h2><h3 id="3-1-Intro"><a href="#3-1-Intro" class="headerlink" title="3.1 Intro"></a>3.1 Intro</h3><p>假设你要拍一张 3D 场景的照片，过程里有三次“变换”：</p>
 <ol>
 <li><strong>模型变换（Model Transformation）</strong><br>就像你先在桌面上摆好小模型的姿势和位置。例如，把一个立方体从原点平移到(5, 2, 0)，再旋转 30°。<ul>
 <li>作用：把物体的<strong>本地坐标系</strong>（物体自身的坐标，比如立方体的中心在(0,0,0)）变换到<strong>世界坐标系</strong>（整个场景的公共坐标）。</li>
@@ -231,7 +253,7 @@
 </li>
 <li><strong>观测变换（View Transformation）</strong><br>就像你自己走到合适的位置，举起相机对准场景。例如，站到场景左边 3 米远，并朝右旋转 90°，那么所有物体的位置都会在相机视角下重新计算。<ul>
 <li>作用：把<strong>世界坐标系</strong>转换到<strong>相机坐标系</strong>（从相机的角度看物体的位置和方向）。</li>
-<li>数学上：本质是“相机的反变换”——相机移动 &#x3D; 场景反方向移动。</li>
+<li>数学上：本质是“相机的反变换”——相机移动 = 场景反方向移动。</li>
 </ul>
 </li>
 <li><strong>投影变换（Projection Transformation）</strong><ul>
@@ -243,69 +265,167 @@
 </li>
 </ul>
 </li>
-<li><strong>视口变换 (viewport transformation)</strong><br>一个简单的拉伸，目标是将$[-1,1]^2$的矩形变换至$[0,w]\times[0,h]$。</li>
+<li><strong>视口变换 (viewport transformation)</strong><br>一个简单的拉伸，目标是将$[-1,1]^2$的矩形变换至$[0,w]\times[0,h]$。<h3 id="3-2-概念辨析"><a href="#3-2-概念辨析" class="headerlink" title="3.2 概念辨析"></a>3.2 概念辨析</h3>模型变换 / 世界变换：R旋转矩阵、S缩放矩阵、T平移矩阵，把<strong>物体的局部坐标系</strong>（比如高斯球的中心是(0,0,0)）变换到<strong>世界坐标系</strong>。<br>相机外参 / 观测变换：V矩阵，相机站在世界的某个位置，朝某个方向看，把<strong>世界坐标系 → 相机坐标系</strong><br>相机内参 / 投影变换：P矩阵，把<strong>相机坐标系 → 屏幕坐标系</strong>。有透视投影与正交投影两种，模拟了相机的成像。<br>对于3DGS：屏幕坐标=高斯世界坐标×View矩阵×Projection矩阵×视口变换矩阵。</li>
 </ol>
-<h3 id="3-2-概念辨析"><a href="#3-2-概念辨析" class="headerlink" title="3.2 概念辨析"></a>3.2 概念辨析</h3><p>模型变换 &#x2F; 世界变换：R旋转矩阵、S缩放矩阵、T平移矩阵，把<strong>物体的局部坐标系</strong>（比如高斯球的中心是(0,0,0)）变换到<strong>世界坐标系</strong>。<br>相机外参 &#x2F; 观测变换：V矩阵，相机站在世界的某个位置，朝某个方向看，把<strong>世界坐标系 → 相机坐标系</strong><br>相机内参 &#x2F; 投影变换：P矩阵，把<strong>相机坐标系 → 屏幕坐标系</strong>。有透视投影与正交投影两种，模拟了相机的成像。<br>对于3DGS：屏幕坐标&#x3D;高斯世界坐标×View矩阵×Projection矩阵×视口变换矩阵。</p>
 <h2 id="4-投影矩阵"><a href="#4-投影矩阵" class="headerlink" title="4 投影矩阵"></a>4 投影矩阵</h2><p>参考外部链接：[[图形学：正交_透视投影矩阵的推导（多个思路）]]</p>
 <h3 id="4-1-标准视体-NDC（Normalized-Device-Coordinates）"><a href="#4-1-标准视体-NDC（Normalized-Device-Coordinates）" class="headerlink" title="4.1 标准视体 NDC（Normalized Device Coordinates）"></a>4.1 标准视体 NDC（Normalized Device Coordinates）</h3><p>标准视体中的坐标就是标准设备坐标，其概念很明确清晰，简而言之就是将 $x$、$y$、$z$ 坐标都划分在 $[-1，1]$ 的区间范围内，框出一个直觉看起来就很“标准”的立方体空间。<br>在接下来的正交投影矩阵和透视投影矩阵，目的都是要将观察空间中的坐标转换成标准视体里的坐标。</p>
-<h3 id="4-2-正交投影"><a href="#4-2-正交投影" class="headerlink" title="4.2 正交投影"></a>4.2 正交投影</h3><p>![正交投影](assets&#x2F;计算机图形学前置知识&#x2F;assets- 3.png)<br>如图，坐标轴原点的位置认为是观察者的位置，正交投影视体框定了一个空间区域，表示我们现在要渲染的是这个空间区域内的物体。其中正交投影视体的上下左右平面范围分别用 $t（top）$、$b（bottom）$、$l（left）$、$r（right)$ 表示。<br><strong>正交投影矩阵</strong>的目的就是将图2的正交投影视体变换到图1中的标准视体。<br>对于都是矩形体的正交投影视体和标准视体，两者之间的转换就十分简单：</p>
-<p>首先是Scale变换：正交投影视体的 $（l，b，n）$ 对应于标准视体的 $（-1，-1, 1）$ $（r，t，f）$ 对应 $（1,1，-1)$ 。至于为什么 $n$ 对应1，而 $f$ 对应-1，这是因为 $x$ 和 $y$ 坐标的映射都是较大者为1，较小者为-1，在图2中， $n$ 在 $z$ 轴上比 $f$ 大，故映射为1。变换矩阵为：<br>$$<br>M_{Scale} &#x3D;  \left[  \begin{array}{1} \frac{2}{r-l}&amp;0&amp;0&amp;0\ 0&amp;\frac{2}{t-b}&amp;0&amp;0\ 0&amp;0&amp;\frac{2}{n-f}&amp;0\ 0&amp;0&amp;0&amp;1 \end{array} \right]<br>$$<br>其次是translation变换：将正交投影视体的几何中心 $(\frac{l+r}{2},\frac{b+t}{2},\frac{n+f}{2})$ 平移到 $(0,0,0)$ ，变换矩阵为：<br>$$<br>M_{Translation} &#x3D;  \left[  \begin{array}{1} 1&amp;0&amp;0&amp;-\frac{l+r}{2}\ 0&amp;1&amp;0&amp;-\frac{b+t}{2}\ 0&amp;0&amp;1&amp;-\frac{n+f}{2}\ 0&amp;0&amp;0&amp;1 \end{array} \right]<br>$$<br>所以最终的正交投影矩阵如下，其作用就是将正交投影视体变换为标准视体。<br>$$<br>\begin{align}<br>M_{Orthographic} &amp;&#x3D;  \left[  \begin{array}{1} \frac{2}{r-l}&amp;0&amp;0&amp;0\ 0&amp;\frac{2}{t-b}&amp;0&amp;0\ 0&amp;0&amp;\frac{2}{n-f}&amp;0\ 0&amp;0&amp;0&amp;1 \end{array} \right]   \left[  \begin{array}{1} 1&amp;0&amp;0&amp;-\frac{l+r}{2}\ 0&amp;1&amp;0&amp;-\frac{b+t}{2}\ 0&amp;0&amp;1&amp;-\frac{n+f}{2}\ 0&amp;0&amp;0&amp;1 \end{array} \right]\<br>&amp;&#x3D;\begin{bmatrix}\frac{2}{r-l}&amp;0&amp;0&amp;-\frac{r+l}{r-l} \ 0&amp;\frac{2}{t-b}&amp;0&amp;-\frac{t+b}{t-b}\ 0&amp;0&amp;\frac{2}{n-f}&amp;-\frac{n+f}{n-f}\ 0&amp;0&amp;0&amp;1\end{bmatrix}<br>\end{align}<br>$$</p>
-<h3 id="4-3-透视投影"><a href="#4-3-透视投影" class="headerlink" title="4.3 透视投影"></a>4.3 透视投影</h3><p>视锥体由原点O发散。<br>![透视投影](assets&#x2F;计算机图形学前置知识&#x2F;assets- 1.png)<br>透视投影推导如下：<br>我们要把相机前方的视锥体（frustum）里的点，映射到一个标准立方体 NDC（Normalized Device Coordinates）：$x, y, z \in [-1, 1]$，注意<strong>近平面为$z&#x3D;-n$，远平面为$z&#x3D;-f$</strong></p>
+<h3 id="4-2-正交投影"><a href="#4-2-正交投影" class="headerlink" title="4.2 正交投影"></a>4.2 正交投影</h3><p><img src="assets/计算机图形学前置知识/assets- 3.png" alt="正交投影"><br>如图，坐标轴原点的位置认为是观察者的位置，正交投影视体框定了一个空间区域，表示我们现在要渲染的是这个空间区域内的物体。其中正交投影视体的上下左右平面范围分别用 $t（top）$、$b（bottom）$、$l（left）$、$r（right)$ 表示。<br><strong>正交投影矩阵</strong>的目的就是将图2的正交投影视体变换到图1中的标准视体。<br>对于都是矩形体的正交投影视体和标准视体，两者之间的转换就十分简单：</p>
+<p>首先是Scale变换：正交投影视体的 $（l，b，n）$ 对应于标准视体的 $（-1，-1, 1）$ $（r，t，f）$ 对应 $（1,1，-1)$ 。至于为什么 $n$ 对应1，而 $f$ 对应-1，这是因为 $x$ 和 $y$ 坐标的映射都是较大者为1，较小者为-1，在图2中， $n$ 在 $z$ 轴上比 $f$ 大，故映射为1。变换矩阵为：</p>
+<script type="math/tex; mode=display">
+M_{Scale} =  \left[  \begin{array}{1} \frac{2}{r-l}&0&0&0\\ 0&\frac{2}{t-b}&0&0\\ 0&0&\frac{2}{n-f}&0\\ 0&0&0&1 \end{array} \right]</script><p>其次是translation变换：将正交投影视体的几何中心 $(\frac{l+r}{2},\frac{b+t}{2},\frac{n+f}{2})$ 平移到 $(0,0,0)$ ，变换矩阵为：</p>
+<script type="math/tex; mode=display">
+M_{Translation} =  \left[  \begin{array}{1} 1&0&0&-\frac{l+r}{2}\\ 0&1&0&-\frac{b+t}{2}\\ 0&0&1&-\frac{n+f}{2}\\ 0&0&0&1 \end{array} \right]</script><p>所以最终的正交投影矩阵如下，其作用就是将正交投影视体变换为标准视体。</p>
+<script type="math/tex; mode=display">
+\begin{align}
+M_{Orthographic} &=  \left[  \begin{array}{1} \frac{2}{r-l}&0&0&0\\ 0&\frac{2}{t-b}&0&0\\ 0&0&\frac{2}{n-f}&0\\ 0&0&0&1 \end{array} \right]   \left[  \begin{array}{1} 1&0&0&-\frac{l+r}{2}\\ 0&1&0&-\frac{b+t}{2}\\ 0&0&1&-\frac{n+f}{2}\\ 0&0&0&1 \end{array} \right]\\
+&=\begin{bmatrix}\frac{2}{r-l}&0&0&-\frac{r+l}{r-l} \\ 0&\frac{2}{t-b}&0&-\frac{t+b}{t-b}\\ 0&0&\frac{2}{n-f}&-\frac{n+f}{n-f}\\ 0&0&0&1\end{bmatrix}
+\end{align}</script><h3 id="4-3-透视投影"><a href="#4-3-透视投影" class="headerlink" title="4.3 透视投影"></a>4.3 透视投影</h3><p>视锥体由原点O发散。<br><img src="assets/计算机图形学前置知识/assets- 1.png" alt="透视投影"><br>透视投影推导如下：<br>我们要把相机前方的视锥体（frustum）里的点，映射到一个标准立方体 NDC（Normalized Device Coordinates）：$x, y, z \in [-1, 1]$，注意<strong>近平面为$z=-n$，远平面为$z=-f$</strong></p>
 <ol>
-<li>透视的核心：近大远小<br>对于任意一个点 $P&#x3D;(x_e, y_e, z_e)$（相机坐标系下）：<br>在近平面上的投影点 $(x_p, y_p)$ 满足相似三角形：<br>$$<br>x_p &#x3D; \frac{-n}{z_e}x_e , y_p &#x3D; \frac{-n}{z_e}y_e<br>$$<br>这里的负号是因为 $z_e &lt; 0$（相机看向 $-z$）。</li>
-<li>映射到 [-1,1] 的 x, y<br>近平面的 x 范围是 $[l, r]$，y 范围是 $[b, t]$。<br>我们要让投影后：<br>$$<br>\begin{align}<br>x_{ndc} &#x3D; -1 \quad \text{当} \quad x_p &#x3D; l\<br>x_{ndc} &#x3D; 1 \quad \text{当} \quad x_p &#x3D; r<br>\end{align}<br>$$<br>所以：<br>$$<br>x_{ndc} &#x3D; \frac{2x_p}{r-l} - \frac{r+l}{r-l}<br>$$<br>代入 $x_p &#x3D; \frac{-n}{z_e} x_e$：<br>$$<br>x_{ndc} &#x3D; \frac{-2n}{(r-l) z_e} x_e - \frac{r+l}{r-l}<br>$$<br>其实这里已经出现了 $1&#x2F;z_e$，这正是透视投影需要的“非线性”部分，稍后我们用齐次坐标处理它。<br>同理 y：<br>$$<br>y_{ndc} &#x3D; \frac{-2n}{(t-b) z_e} y_e - \frac{t+b}{t-b}<br>$$</li>
+<li>透视的核心：近大远小<br>对于任意一个点 $P=(x_e, y_e, z_e)$（相机坐标系下）：<br>在近平面上的投影点 $(x_p, y_p)$ 满足相似三角形：<script type="math/tex; mode=display">
+x_p = \frac{-n}{z_e}x_e , y_p = \frac{-n}{z_e}y_e</script>这里的负号是因为 $z_e &lt; 0$（相机看向 $-z$）。</li>
+<li>映射到 [-1,1] 的 x, y<br>近平面的 x 范围是 $[l, r]$，y 范围是 $[b, t]$。<br>我们要让投影后：<script type="math/tex; mode=display">
+\begin{align}
+x_{ndc} = -1 \quad \text{当} \quad x_p = l\\
+x_{ndc} = 1 \quad \text{当} \quad x_p = r
+\end{align}</script>所以：<script type="math/tex; mode=display">
+x_{ndc} = \frac{2x_p}{r-l} - \frac{r+l}{r-l}</script>代入 $x_p = \frac{-n}{z_e} x_e$：<script type="math/tex; mode=display">
+x_{ndc} = \frac{-2n}{(r-l) z_e} x_e - \frac{r+l}{r-l}</script>其实这里已经出现了 $1/z_e$，这正是透视投影需要的“非线性”部分，稍后我们用齐次坐标处理它。<br>同理 y：<script type="math/tex; mode=display">
+y_{ndc} = \frac{-2n}{(t-b) z_e} y_e - \frac{t+b}{t-b}</script></li>
 <li>用齐次坐标矩阵实现<br>在 4D 齐次坐标下：</li>
 </ol>
 <ul>
-<li>透视效果靠最后一行产生 $w’ &#x3D; -z_e$，然后除以 $w’$ 产生 $1&#x2F;z_e$ 的效果。</li>
-<li>我们先写出矩阵乘法前的形式：<br>设投影矩阵 $M_{proj}$：<br>$$<br>\begin{bmatrix} x_c \ y_c \ z_c \ w_c \end{bmatrix} &#x3D; \begin{bmatrix} \frac{2n}{r-l} &amp; 0 &amp; \frac{r+l}{r-l} &amp; 0 \ 0 &amp; \frac{2n}{t-b} &amp; \frac{t+b}{t-b} &amp; 0 \ 0 &amp; 0 &amp; A &amp; B \ 0 &amp; 0 &amp; -1 &amp; 0 \end{bmatrix} \begin{bmatrix} x_e \ y_e \ z_e \ 1 \end{bmatrix}<br>$$<br>其中：</li>
+<li>透视效果靠最后一行产生 $w’ = -z_e$，然后除以 $w’$ 产生 $1/z_e$ 的效果。</li>
+<li>我们先写出矩阵乘法前的形式：<br>设投影矩阵 $M_{proj}$：<script type="math/tex; mode=display">
+\begin{bmatrix} x_c \\ y_c \\ z_c \\ w_c \end{bmatrix} = \begin{bmatrix} \frac{2n}{r-l} & 0 & \frac{r+l}{r-l} & 0 \\ 0 & \frac{2n}{t-b} & \frac{t+b}{t-b} & 0 \\ 0 & 0 & A & B \\ 0 & 0 & -1 & 0 \end{bmatrix} \begin{bmatrix} x_e \\ y_e \\ z_e \\ 1 \end{bmatrix}</script>其中：</li>
 <li>第 1 行和第 2 行：对应 x, y 的线性缩放和平移，且<strong>会被除以 w_c</strong>，实现远小近大的效果。</li>
-<li>最后一行 <code>[0, 0, -1, 0]</code>：保证 $w_c &#x3D; -z_e$。</li>
+<li>最后一行 <code>[0, 0, -1, 0]</code>：保证 $w_c = -z_e$。</li>
 </ul>
 <ol>
-<li>确定 A, B（z 深度映射）<br>我们希望：<br>$$<br>\begin{align}<br>z_{ndc} &#x3D; -1 \quad \text{当} \quad z_e &#x3D; -n\<br>z_{ndc} &#x3D; 1 \quad \text{当} \quad z_e &#x3D; -f<br>\end{align}<br>$$<br>透视除法前：<br>$$<br>z_{ndc} &#x3D; \frac{z_c}{w_c} &#x3D; \frac{A z_e + B}{-z_e}<br>$$<br>代入 $z_e &#x3D; -n$：$-1 &#x3D; \frac{-An + B}{n}$<br>代入 $z_e &#x3D; -f$：$1 &#x3D; \frac{-Af + B}{f}$<br>解这个方程组：<br>$A &#x3D; -\frac{f+n}{f-n}$ ，$B &#x3D; -\frac{2fn}{f-n}$</li>
-<li>最终透视投影矩阵<br>$$<br>M_{proj} &#x3D; \begin{bmatrix} \frac{2n}{r-l} &amp; 0 &amp; \frac{r+l}{r-l} &amp; 0 \ 0 &amp; \frac{2n}{t-b} &amp; \frac{t+b}{t-b} &amp; 0 \ 0 &amp; 0 &amp; -\frac{f+n}{f-n} &amp; -\frac{2fn}{f-n} \ 0 &amp; 0 &amp; -1 &amp; 0 \end{bmatrix}<br>$$<br>这是 OpenGL 风格的透视矩阵（右手系，NDC $z \in [-1,1]$）。<br>或者：先把锥体“压”成立方体，再进行正交投影：<br>$$<br>M_{\mathit{persp}\to\mathit{ortho}} &#x3D;<br>\left[<br>\begin{array}{c@{\quad}c@{\quad}c@{\quad}c}<br>n &amp; 0 &amp; 0 &amp; 0 \<br>0 &amp; n &amp; 0 &amp; 0 \<br>0 &amp; 0 &amp; n+f &amp; -nf \<br>0 &amp; 0 &amp; 1 &amp; 0<br>\end{array}<br>\right]<br>$$<br>但无论采用哪种方式，投影变换都不是线性的，是非仿射变换。</li>
-</ol>
-<h3 id="4-4-对于CV而言"><a href="#4-4-对于CV而言" class="headerlink" title="4.4 对于CV而言"></a>4.4 对于CV而言</h3><p>投影矩阵就是相机<strong>内参 $K$</strong>，在相机生产的时候就已经确定。它包含了：<br>$f_x, f_y$：把毫米换算成像素的比例系数。 $c_x, c_y$：图像平面的中心点（主点偏移），因为像素坐标系通常以左上角为原点。<br>$$K &#x3D; \begin{bmatrix} f_x &amp; 0 &amp; c_x \ 0 &amp; f_y &amp; c_y \ 0 &amp; 0 &amp; 1 \end{bmatrix}$$</p>
-<ol>
-<li>投影计算过程<br>当你把一个相机坐标系下的点 $P &#x3D; [X, Y, Z]^T$ 左乘内参矩阵 $K$ 时，得到的结果是：<br>$$\begin{bmatrix} u’ \ v’ \ w’ \end{bmatrix} &#x3D; \begin{bmatrix} f_x &amp; 0 &amp; c_x \ 0 &amp; f_y &amp; c_y \ 0 &amp; 0 &amp; 1 \end{bmatrix} \begin{bmatrix} X \ Y \ Z \end{bmatrix} &#x3D; \begin{bmatrix} f_x X + c_x Z \ f_y Y + c_y Z \ Z \end{bmatrix}$$<br>这时候，得到的 $w’$ 这一项正好就是点到相机的距离 $Z$（深度）。</li>
+<li>确定 A, B（z 深度映射）<br>我们希望：<script type="math/tex; mode=display">
+\begin{align}
+z_{ndc} = -1 \quad \text{当} \quad z_e = -n\\
+z_{ndc} = 1 \quad \text{当} \quad z_e = -f
+\end{align}</script>透视除法前：<script type="math/tex; mode=display">
+z_{ndc} = \frac{z_c}{w_c} = \frac{A z_e + B}{-z_e}</script>代入 $z_e = -n$：$-1 = \frac{-An + B}{n}$<br>代入 $z_e = -f$：$1 = \frac{-Af + B}{f}$<br>解这个方程组：<br>$A = -\frac{f+n}{f-n}$ ，$B = -\frac{2fn}{f-n}$</li>
+<li>最终透视投影矩阵<script type="math/tex; mode=display">
+M_{proj} = \begin{bmatrix} \frac{2n}{r-l} & 0 & \frac{r+l}{r-l} & 0 \\ 0 & \frac{2n}{t-b} & \frac{t+b}{t-b} & 0 \\ 0 & 0 & -\frac{f+n}{f-n} & -\frac{2fn}{f-n} \\ 0 & 0 & -1 & 0 \end{bmatrix}</script>这是 OpenGL 风格的透视矩阵（右手系，NDC $z \in [-1,1]$）。<br>或者：先把锥体“压”成立方体，再进行正交投影：<script type="math/tex; mode=display">
+M_{\mathit{persp}\to\mathit{ortho}} =
+\left[
+\begin{array}{c@{\quad}c@{\quad}c@{\quad}c}
+n & 0 & 0 & 0 \\
+0 & n & 0 & 0 \\
+0 & 0 & n+f & -nf \\
+0 & 0 & 1 & 0
+\end{array}
+\right]</script>但无论采用哪种方式，投影变换都不是线性的，是非仿射变换。<h3 id="4-4-对于CV而言"><a href="#4-4-对于CV而言" class="headerlink" title="4.4 对于CV而言"></a>4.4 对于CV而言</h3>投影矩阵就是相机<strong>内参 $K$</strong>，在相机生产的时候就已经确定。它包含了：<br>$f_x, f_y$：把毫米换算成像素的比例系数。 $c_x, c_y$：图像平面的中心点（主点偏移），因为像素坐标系通常以左上角为原点。<script type="math/tex; mode=display">K = \begin{bmatrix} f_x & 0 & c_x \\ 0 & f_y & c_y \\ 0 & 0 & 1 \end{bmatrix}</script></li>
+<li>投影计算过程<br>当你把一个相机坐标系下的点 $P = [X, Y, Z]^T$ 左乘内参矩阵 $K$ 时，得到的结果是：<script type="math/tex; mode=display">\begin{bmatrix} u' \\ v' \\ w' \end{bmatrix} = \begin{bmatrix} f_x & 0 & c_x \\ 0 & f_y & c_y \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} X \\ Y \\ Z \end{bmatrix} = \begin{bmatrix} f_x X + c_x Z \\ f_y Y + c_y Z \\ Z \end{bmatrix}</script>这时候，得到的 $w’$ 这一项正好就是点到相机的距离 $Z$（深度）。</li>
 <li>归一化到像素坐标<br>我们需要进行归一化处理。在计算机视觉中，这通常被称为<strong>齐次坐标转换</strong>：</li>
 </ol>
 <ul>
-<li><strong>像素横坐标：</strong> $u &#x3D; \frac{u’}{w’} &#x3D; \frac{f_x X}{Z} + c_x$</li>
-<li><strong>像素纵坐标：</strong> $v &#x3D; \frac{v’}{w’} &#x3D; \frac{f_y Y}{Z} + c_y$</li>
+<li><strong>像素横坐标：</strong> $u = \frac{u’}{w’} = \frac{f_x X}{Z} + c_x$</li>
+<li><strong>像素纵坐标：</strong> $v = \frac{v’}{w’} = \frac{f_y Y}{Z} + c_y$<h2 id="5-对极几何与三角化"><a href="#5-对极几何与三角化" class="headerlink" title="5 对极几何与三角化"></a>5 对极几何与三角化</h2><h3 id="5-1-本质矩阵与基础矩阵"><a href="#5-1-本质矩阵与基础矩阵" class="headerlink" title="5.1 本质矩阵与基础矩阵"></a>5.1 本质矩阵与基础矩阵</h3>意义：只要两台相机就可以确定一个点在世界坐标系下的坐标位置<br><img src="assets/计算机图形学前置知识/assets-.png" alt="对极几何"><br>给定两个相机中心 $C_1$、$C_2$ 与一个 3D 点 $X$，三点共面，所确定的平面称为<strong>对极平面</strong>（Epipolar Plane）。<br>设两相机坐标系之间的变换为 $[R \mid T]$，其中 $R$ 为旋转矩阵，$T$ 为从第一相机坐标系到第二相机坐标系的平移向量。对于第一相机坐标系中的点 $p$，其在第二相机坐标系中的坐标为：<script type="math/tex; mode=display">
+p' = R p + T</script>对等式两边左叉乘 $T$，得：<script type="math/tex; mode=display">
+T \times p' = T \times (R p + T) = T \times R p + T \times T = T \times R p</script>因为 $T \times T = 0$。注意到 $T \times p’$ 垂直于对极平面，即为该平面的法向量。又因 $p’$ 位于该平面上，故 $p’$ 与法向量正交：<script type="math/tex; mode=display">
+p'^{\top} (T \times R p) = 0</script>利用叉积与反对称矩阵的关系：对任意向量 $a$，有 $b \times a = [b]_\times a$，其中 $[b]_\times$ 是 $b$ 的反对称矩阵。定义 $S = [T]_\times$，即：<script type="math/tex; mode=display">
+S = \begin{bmatrix}
+0 & -T_z & T_y \\
+T_z & 0 & -T_x \\
+-T_y & T_x & 0
+\end{bmatrix}</script>则 $T \times R p = S R p$，代入上式得：<script type="math/tex; mode=display">
+p'^{\top} S R p = 0</script><blockquote>
+<p>[!important]<br>令本质矩阵 $E = S R=T \times R$，最终得到对极约束：</p>
+<script type="math/tex; mode=display">
+p'^{\top} E p = 0</script><p>这个$E$就是<strong>本质矩阵</strong>。</p>
+</blockquote>
+</li>
 </ul>
-<h2 id="5-对极几何与三角化"><a href="#5-对极几何与三角化" class="headerlink" title="5 对极几何与三角化"></a>5 对极几何与三角化</h2><h3 id="5-1-本质矩阵与基础矩阵"><a href="#5-1-本质矩阵与基础矩阵" class="headerlink" title="5.1 本质矩阵与基础矩阵"></a>5.1 本质矩阵与基础矩阵</h3><p>意义：只要两台相机就可以确定一个点在世界坐标系下的坐标位置<br><img src="/assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets-.png" alt="对极几何"><br>给定两个相机中心 $C_1$、$C_2$ 与一个 3D 点 $X$，三点共面，所确定的平面称为<strong>对极平面</strong>（Epipolar Plane）。<br>设两相机坐标系之间的变换为 $[R \mid T]$，其中 $R$ 为旋转矩阵，$T$ 为从第一相机坐标系到第二相机坐标系的平移向量。对于第一相机坐标系中的点 $p$，其在第二相机坐标系中的坐标为：<br>$$<br>p’ &#x3D; R p + T<br>$$<br>对等式两边左叉乘 $T$，得：<br>$$<br>T \times p’ &#x3D; T \times (R p + T) &#x3D; T \times R p + T \times T &#x3D; T \times R p<br>$$<br>因为 $T \times T &#x3D; 0$。注意到 $T \times p’$ 垂直于对极平面，即为该平面的法向量。又因 $p’$ 位于该平面上，故 $p’$ 与法向量正交：<br>$$<br>p’^{\top} (T \times R p) &#x3D; 0<br>$$<br>利用叉积与反对称矩阵的关系：对任意向量 $a$，有 $b \times a &#x3D; [b]<em>\times a$，其中 $[b]</em>\times$ 是 $b$ 的反对称矩阵。定义 $S &#x3D; [T]_\times$，即：<br>$$<br>S &#x3D; \begin{bmatrix}<br>0 &amp; -T_z &amp; T_y \<br>T_z &amp; 0 &amp; -T_x \<br>-T_y &amp; T_x &amp; 0<br>\end{bmatrix}<br>$$<br>则 $T \times R p &#x3D; S R p$，代入上式得：<br>$$<br>p’^{\top} S R p &#x3D; 0<br>$$</p>
-<blockquote>
-<p>[!important]<br>令本质矩阵 $E &#x3D; S R&#x3D;T \times R$，最终得到对极约束：<br>$$<br>p’^{\top} E p &#x3D; 0<br>$$<br>这个$E$就是<strong>本质矩阵</strong>。</p>
-</blockquote>
-<p>设第一、第二相机的内参矩阵分别为 $K_1$ 和 $K_2$，$x$ 和 $x’$ 是图像平面上的齐次像素坐标。将归一化相机坐标（即去内参后的坐标）记为：<br>$$<br>p &#x3D; K_1^{-1} x, \quad p’ &#x3D; K_2^{-1} x’<br>$$<br>将 $p &#x3D; K_1^{-1} x$、$p’ &#x3D; K_2^{-1} x’$ 代入，得：<br>$$<br>(K_2^{-1} x’)^{\top} E (K_1^{-1} x) &#x3D; 0<br>$$<br>利用转置性质 $(AB)^{\top} &#x3D; B^{\top} A^{\top}$，上式等价于：<br>$$<br>x’^{\top} (K_2^{-\top} E K_1^{-1}) x &#x3D; 0<br>$$</p>
-<blockquote>
-<p>[!important]<br>定义<strong>基础矩阵</strong>（Fundamental Matrix）为：<br>$$<br>F &#x3D; K_2^{-\top} E K_1^{-1}<br>$$<br>则对极约束在像素坐标下表示为：<br>$$<br>x’^{\top} F x &#x3D; 0<br>$$</p>
-</blockquote>
-<h3 id="5-2-三角化"><a href="#5-2-三角化" class="headerlink" title="5.2 三角化"></a>5.2 三角化</h3><p>已知：两台相机的<strong>完整投影矩阵</strong>$P_1 &#x3D; K_1 [R_1 \mid t_1], \quad  P_2 &#x3D; K_2 [R_2 \mid t_2]$；同一个 3D 点在两张图上的像素坐标$x_1 \leftrightarrow x_2$；<br>要求：${ X &#x3D; (X, Y, Z, 1)^\top }$，即这个点在 3D 空间中的真实位置​。</p>
-<p>从 C1 出发，穿过 x1，得到一条射线 r1；从 C2 出发，穿过 x2，得到一条射线 r2<br>理论上：$X&#x3D;r_{1} \cap r_{2}$<br>但现实是：有噪声、有标定误差、有像素误差，所以r1 和 r2 永远几乎不会严格相交。<br>于是我们把：“求两条射线的交点”，升级为：求一个点 X，使它到两条射线的距离最小，或者等价地：让 X 投影回两张图后，与原始观测点误差最小。<br>$$<br>​\min_X<br>|\pi(P_1, X) - x_1|^2+|\pi(P_2, X) - x_2|^2<br>$$<br>投影关系为齐次等价：<br>$$<br>x_i \sim P_i X \quad (i&#x3D;1,2)<br>$$<br>等价于叉积为零（方向一致）：<br>$$<br>x_i \times (P_i X) &#x3D; 0<br>$$<br>将 $P_i$ 按行拆解：<br>$$<br>P_i &#x3D; \begin{bmatrix}<br>p_{i,1}^\top \<br>p_{i,2}^\top \<br>p_{i,3}^\top<br>\end{bmatrix}<br>\quad \Rightarrow \quad<br>P_i X &#x3D; \begin{bmatrix}<br>p_{i,1}^\top X \<br>p_{i,2}^\top X \<br>p_{i,3}^\top X<br>\end{bmatrix}<br>$$<br>代入叉积：<br>$$<br>x_i \times (P_i X) &#x3D;<br>\begin{bmatrix}<br>v_i (p_{i,3}^\top X) - p_{i,2}^\top X \<br>p_{i,1}^\top X - u_i (p_{i,3}^\top X) \<br>u_i p_{i,2}^\top X - v_i p_{i,1}^\top X<br>\end{bmatrix}<br>&#x3D; 0<br>$$<br>其中只有两行线性独立，取作约束：<br>$$<br>\begin{cases}<br>(u_i p_{i,3}^\top - p_{i,1}^\top) X &#x3D; 0 \<br>(v_i p_{i,3}^\top - p_{i,2}^\top) X &#x3D; 0<br>\end{cases}<br>$$<br>每视角贡献 <strong>2 行线性方程</strong>。<br>合并两个视角，得到 $4 \times 4$ 矩阵 $A$：<br>$$<br>A &#x3D;<br>\begin{bmatrix}<br>u_1 p_{1,3}^\top - p_{1,1}^\top \<br>v_1 p_{1,3}^\top - p_{1,2}^\top \<br>u_2 p_{2,3}^\top - p_{2,1}^\top \<br>v_2 p_{2,3}^\top - p_{2,2}^\top<br>\end{bmatrix}<br>\in \mathbb{R}^{4 \times 4}<br>$$<br>目标变为求解：<br>$$<br>A X &#x3D; 0<br>$$<br>现实中 $AX &#x3D; 0$ 无精确解，转为优化问题：<br>$$<br>\min_{|X| &#x3D; 1} |A X|^2<br>$$<br>这是齐次最小二乘问题。</p>
-<h3 id="5-3-SVD-解法（标准答案）"><a href="#5-3-SVD-解法（标准答案）" class="headerlink" title="5.3 SVD 解法（标准答案）"></a>5.3 SVD 解法（标准答案）</h3><p>对 $A$ 做奇异值分解：<br>$$<br>A &#x3D; U \Sigma V^\top<br>$$<br>令 $X$ 为 $V$ 的<strong>最后一列</strong>（对应最小奇异值），即：<br>$$<br>X &#x3D; V[:, -1]<br>$$<br>该 $X$ 是齐次坐标，需归一化：<br>$$<br>X_{\text{3D}} &#x3D; \left( \frac{X}{W}, \frac{Y}{W}, \frac{Z}{W} \right)^\top<br>$$</p>
-<h3 id="5-4-Bundle-Adjustment（BA）——联合优化的终极目标"><a href="#5-4-Bundle-Adjustment（BA）——联合优化的终极目标" class="headerlink" title="5.4 Bundle Adjustment（BA）——联合优化的终极目标"></a>5.4 Bundle Adjustment（BA）——联合优化的终极目标</h3><p>三角化给出了一个<strong>初始的 3D 点估计</strong>，但该估计依赖于固定的相机位姿（即 $P_1, P_2$ 被视为已知且精确）。然而在实际系统中（如SfM、SLAM），相机位姿本身也是通过特征匹配和对极几何<strong>估计出来的</strong>，同样存在误差。<br>因此，仅靠一次三角化无法得到全局一致、高精度的重建结果。</p>
+<p>设第一、第二相机的内参矩阵分别为 $K_1$ 和 $K_2$，$x$ 和 $x’$ 是图像平面上的齐次像素坐标。将归一化相机坐标（即去内参后的坐标）记为：</p>
+<script type="math/tex; mode=display">
+p = K_1^{-1} x, \quad p' = K_2^{-1} x'</script><p>将 $p = K_1^{-1} x$、$p’ = K_2^{-1} x’$ 代入，得：</p>
+<script type="math/tex; mode=display">
+(K_2^{-1} x')^{\top} E (K_1^{-1} x) = 0</script><p>利用转置性质 $(AB)^{\top} = B^{\top} A^{\top}$，上式等价于：</p>
+<script type="math/tex; mode=display">
+x'^{\top} (K_2^{-\top} E K_1^{-1}) x = 0</script><blockquote>
+<p>[!important]<br>定义<strong>基础矩阵</strong>（Fundamental Matrix）为：</p>
+<script type="math/tex; mode=display">
+F = K_2^{-\top} E K_1^{-1}</script><p>则对极约束在像素坐标下表示为：</p>
+<script type="math/tex; mode=display">
+x'^{\top} F x = 0</script></blockquote>
+<h3 id="5-2-三角化"><a href="#5-2-三角化" class="headerlink" title="5.2 三角化"></a>5.2 三角化</h3><p>已知：两台相机的<strong>完整投影矩阵</strong>$P_1 = K_1 [R_1 \mid t_1], \quad  P_2 = K_2 [R_2 \mid t_2]$；同一个 3D 点在两张图上的像素坐标$x_1 \leftrightarrow x_2$；<br>要求：${ X = (X, Y, Z, 1)^\top }$，即这个点在 3D 空间中的真实位置​。</p>
+<p>从 C1 出发，穿过 x1，得到一条射线 r1；从 C2 出发，穿过 x2，得到一条射线 r2<br>理论上：$X=r_{1} \cap r_{2}$<br>但现实是：有噪声、有标定误差、有像素误差，所以r1 和 r2 永远几乎不会严格相交。<br>于是我们把：“求两条射线的交点”，升级为：求一个点 X，使它到两条射线的距离最小，或者等价地：让 X 投影回两张图后，与原始观测点误差最小。</p>
+<script type="math/tex; mode=display">
+\min_X
+|\pi(P_1, X) - x_1|^2+|\pi(P_2, X) - x_2|^2</script><p>投影关系为齐次等价：</p>
+<script type="math/tex; mode=display">
+x_i \sim P_i X \quad (i=1,2)</script><p>等价于叉积为零（方向一致）：</p>
+<script type="math/tex; mode=display">
+x_i \times (P_i X) = 0</script><p>将 $P_i$ 按行拆解：</p>
+<script type="math/tex; mode=display">
+P_i = \begin{bmatrix}
+p_{i,1}^\top \\
+p_{i,2}^\top \\
+p_{i,3}^\top
+\end{bmatrix}
+\quad \Rightarrow \quad
+P_i X = \begin{bmatrix}
+p_{i,1}^\top X \\
+p_{i,2}^\top X \\
+p_{i,3}^\top X
+\end{bmatrix}</script><p>代入叉积：</p>
+<script type="math/tex; mode=display">
+x_i \times (P_i X) =
+\begin{bmatrix}
+v_i (p_{i,3}^\top X) - p_{i,2}^\top X \\
+p_{i,1}^\top X - u_i (p_{i,3}^\top X) \\
+u_i p_{i,2}^\top X - v_i p_{i,1}^\top X
+\end{bmatrix}
+= 0</script><p>其中只有两行线性独立，取作约束：</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+(u_i p_{i,3}^\top - p_{i,1}^\top) X = 0 \\
+(v_i p_{i,3}^\top - p_{i,2}^\top) X = 0
+\end{cases}</script><p>每视角贡献 <strong>2 行线性方程</strong>。<br>合并两个视角，得到 $4 \times 4$ 矩阵 $A$：</p>
+<script type="math/tex; mode=display">
+A =
+\begin{bmatrix}
+u_1 p_{1,3}^\top - p_{1,1}^\top \\
+v_1 p_{1,3}^\top - p_{1,2}^\top \\
+u_2 p_{2,3}^\top - p_{2,1}^\top \\
+v_2 p_{2,3}^\top - p_{2,2}^\top
+\end{bmatrix}
+\in \mathbb{R}^{4 \times 4}</script><p>目标变为求解：</p>
+<script type="math/tex; mode=display">
+A X = 0</script><p>现实中 $AX = 0$ 无精确解，转为优化问题：</p>
+<script type="math/tex; mode=display">
+\min_{\|X\| = 1} \|A X\|^2</script><p>这是齐次最小二乘问题。</p>
+<h3 id="5-3-SVD-解法（标准答案）"><a href="#5-3-SVD-解法（标准答案）" class="headerlink" title="5.3 SVD 解法（标准答案）"></a>5.3 SVD 解法（标准答案）</h3><p>对 $A$ 做奇异值分解：</p>
+<script type="math/tex; mode=display">
+A = U \Sigma V^\top</script><p>令 $X$ 为 $V$ 的<strong>最后一列</strong>（对应最小奇异值），即：</p>
+<script type="math/tex; mode=display">
+X = V[:, -1]</script><p>该 $X$ 是齐次坐标，需归一化：</p>
+<script type="math/tex; mode=display">
+X_{\text{3D}} = \left( \frac{X}{W}, \frac{Y}{W}, \frac{Z}{W} \right)^\top</script><h3 id="5-4-Bundle-Adjustment（BA）——联合优化的终极目标"><a href="#5-4-Bundle-Adjustment（BA）——联合优化的终极目标" class="headerlink" title="5.4 Bundle Adjustment（BA）——联合优化的终极目标"></a>5.4 Bundle Adjustment（BA）——联合优化的终极目标</h3><p>三角化给出了一个<strong>初始的 3D 点估计</strong>，但该估计依赖于固定的相机位姿（即 $P_1, P_2$ 被视为已知且精确）。然而在实际系统中（如SfM、SLAM），相机位姿本身也是通过特征匹配和对极几何<strong>估计出来的</strong>，同样存在误差。<br>因此，仅靠一次三角化无法得到全局一致、高精度的重建结果。</p>
 <blockquote>
 <p><strong>Bundle Adjustment 的核心思想是：</strong><br><strong>同时优化所有相机位姿和所有 3D 点坐标，使得它们共同最小化重投影误差。</strong></p>
 </blockquote>
 <p>给定：</p>
 <ul>
-<li>一组相机参数 ${P_j}_{j&#x3D;1}^m$（或等价地 ${K_j, R_j, t_j}$）</li>
-<li>一组 3D 点 ${X_i}_{i&#x3D;1}^n$</li>
-<li>一组观测：若点 $X_i$ 在相机 $j$ 中可见，则有图像测量值 $x_{ij}$<br>定义重投影误差为：<br>$$<br>e_{ij} &#x3D; x_{ij} - \pi(P_j, X_i)<br>$$<br>其中 $\pi(\cdot)$ 是相机投影函数（通常为 $x &#x3D; K [R \mid t] X$ 后归一化）。<br>则 BA 的目标是最小化<strong>所有可见观测的总重投影误差平方和</strong>：<br>$$<br>\min_{{P_j}, {X_i}} \sum_{(i,j) \in \mathcal{V}} \left| x_{ij} - \pi(P_j, X_i) \right|^2<br>$$<br>其中 $\mathcal{V}$ 是所有有效观测（visibility）的索引集合：第 ( i ) 个相机观测到的第 ( j ) 个特征点在图像上的实际观测坐标。</li>
+<li>一组相机参数 $\{P_j\}_{j=1}^m$（或等价地 $\{K_j, R_j, t_j\}$）</li>
+<li>一组 3D 点 $\{X_i\}_{i=1}^n$</li>
+<li>一组观测：若点 $X_i$ 在相机 $j$ 中可见，则有图像测量值 $x_{ij}$<br>定义重投影误差为：<script type="math/tex; mode=display">
+e_{ij} = x_{ij} - \pi(P_j, X_i)</script>其中 $\pi(\cdot)$ 是相机投影函数（通常为 $x = K [R \mid t] X$ 后归一化）。<br>则 BA 的目标是最小化<strong>所有可见观测的总重投影误差平方和</strong>：<script type="math/tex; mode=display">
+\min_{\{P_j\}, \{X_i\}} \sum_{(i,j) \in \mathcal{V}} \left\| x_{ij} - \pi(P_j, X_i) \right\|^2</script>其中 $\mathcal{V}$ 是所有有效观测（visibility）的索引集合：第 ( i ) 个相机观测到的第 ( j ) 个特征点在图像上的实际观测坐标。</li>
 </ul>
 <h1 id="视觉重建全流程"><a href="#视觉重建全流程" class="headerlink" title="视觉重建全流程"></a>视觉重建全流程</h1><h2 id="1-起点：只有两张图"><a href="#1-起点：只有两张图" class="headerlink" title="1 起点：只有两张图"></a>1 起点：只有两张图</h2><ul>
 <li>无相机位姿、无 3D 结构  </li>
 <li>在两张图里，找“看起来像是同一个物理点”的像素位置，能得到很多对 $(x_1, x_2)$像素对应关系。</li>
 </ul>
 <h2 id="2-估计相对几何-→-本质矩阵-E"><a href="#2-估计相对几何-→-本质矩阵-E" class="headerlink" title="2 估计相对几何 → 本质矩阵 $E$"></a>2 估计相对几何 → 本质矩阵 $E$</h2><ul>
-<li>利用对极约束 $x_2^\top E x_1 &#x3D; 0$  </li>
+<li>利用对极约束 $x_2^\top E x_1 = 0$  </li>
 <li>从所有匹配对中拟合出最一致的 $E$</li>
 </ul>
 <h2 id="3-从-E-解出-R-t"><a href="#3-从-E-解出-R-t" class="headerlink" title="3 从 $E$ 解出 $(R, t)$"></a>3 从 $E$ 解出 $(R, t)$</h2><ul>
-<li>$E &#x3D; [t]_\times R$ ⇒ 有 <strong>4 组数学解</strong></li>
+<li>$E = [t]_\times R$ ⇒ 有 <strong>4 组数学解</strong></li>
 <li>用<strong>深度为正</strong>（点在相机前方）筛选 → <strong>唯一合理解</strong></li>
 <li>设第一相机在原点，第二相机位姿即为 $(R, t)$</li>
 </ul>
@@ -338,9 +458,10 @@
 <li>整个系统是一个<strong>自举（bootstrapping）+ 优化</strong>的过程</li>
 </ul>
 <blockquote>
-<p>💡 <strong>SfM &#x2F; SLAM 的本质</strong>：<br>不是“计算相机在哪”， 而是不断调整一个能最好解释所有图像的几何模型。</p>
+<p>💡 <strong>SfM / SLAM 的本质</strong>：<br>不是“计算相机在哪”， 而是不断调整一个能最好解释所有图像的几何模型。</p>
 </blockquote>
-<h1 id="SFM点云"><a href="#SFM点云" class="headerlink" title="SFM点云"></a>SFM点云</h1><h2 id="1-SfM-Structure-from-Motion"><a href="#1-SfM-Structure-from-Motion" class="headerlink" title="1 SfM (Structure from Motion)"></a>1 SfM (Structure from Motion)</h2><table>
+<h1 id="SFM点云"><a href="#SFM点云" class="headerlink" title="SFM点云"></a>SFM点云</h1><h2 id="1-SfM-Structure-from-Motion"><a href="#1-SfM-Structure-from-Motion" class="headerlink" title="1 SfM (Structure from Motion)"></a>1 SfM (Structure from Motion)</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th><strong>英文全称</strong></th>
@@ -348,7 +469,8 @@
 <th></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>核心目标</td>
 <td>“从运动中恢复结构”。</td>
 <td></td>
@@ -361,15 +483,17 @@
 <tr>
 <td>输出</td>
 <td>1. <strong>场景的结构 (Structure)</strong>：一组稀疏的 3D 点云（SfM Points）。 2. <strong>相机的运动 (Motion)</strong>：每张照片拍摄时的<strong>相机位姿</strong>（位置和朝向，即相机外参）。</td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>直观理解：<br>拿着手机绕着一座雕塑拍摄了一百张照片。SfM 算法能够分析这 100 张照片，通过识别照片中物体的变化，精确地计算出：</p>
 <ol>
 <li>在拍摄每一张照片时，手机确切的位置和朝向（相机外参）。</li>
 <li>雕塑表面上几千个点的 3D 坐标（稀疏点云）。</li>
 </ol>
 <h2 id="2-📝-SfM-步骤的简要解读"><a href="#2-📝-SfM-步骤的简要解读" class="headerlink" title="2 📝 SfM 步骤的简要解读"></a>2 📝 SfM 步骤的简要解读</h2><p>传统SfM步骤如下：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -378,7 +502,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>1. 特征提取与描述</strong></td>
 <td>在每张图像中检测<strong>稳定、可重复、具有判别性</strong>的局部关键点，并生成其描述子（descriptor）。</td>
 <td>为后续匹配提供“视觉锚点”；SIFT、ORB、SuperPoint 等算法实现此功能。</td>
@@ -404,19 +529,20 @@
 <td>将新相机“注册”到已有地图中；通常使用 PnP（如 EPnP、UPnP）或其鲁棒变种（RANSAC + PnP）。</td>
 </tr>
 <tr>
-<td><strong>6. 局部&#x2F;全局 BA 优化</strong></td>
+<td><strong>6. 局部/全局 BA 优化</strong></td>
 <td><strong>联合优化</strong>所有可见的相机位姿和 3D 点坐标，最小化<strong>全局重投影误差</strong>。</td>
-<td>消除累积误差，提升几何一致性；是 SfM&#x2F;SLAM 输出高精度结果的关键步骤，通常在关键帧后或最后执行。</td>
+<td>消除累积误差，提升几何一致性；是 SfM/SLAM 输出高精度结果的关键步骤，通常在关键帧后或最后执行。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>在 3DGS 训练中，SfM 不仅提供了初始点云，更重要的是它提供了精确的Camera参数（相机位姿），这才能让模型知道它渲染的图像应该和哪张 Ground Truth 图像进行比较。</p>
 <h2 id="3-SfM-Points（3DGS-的起点）"><a href="#3-SfM-Points（3DGS-的起点）" class="headerlink" title="3 SfM Points（3DGS 的起点）"></a>3 SfM Points（3DGS 的起点）</h2><p>SfM Points 就是 SfM 算法输出的<strong>稀疏 3D 点云</strong>。</p>
 <h3 id="3-1-SfM-Points-的特点"><a href="#3-1-SfM-Points-的特点" class="headerlink" title="3.1 SfM Points 的特点"></a>3.1 SfM Points 的特点</h3><ul>
 <li><strong>稀疏 (Sparse)：</strong> 它们不是密集的表面重建，通常只有几千到几万个点。</li>
 <li><strong>不带颜色：</strong> 它们只有 3D 坐标 $(x, y, z)$，但通常会记录一些特征信息（如描述子）。</li>
-<li><strong>高精度：</strong> 它们的位置经过了复杂的优化（Bundle Adjustment，即 BA），通常比单个图像直接计算的坐标要准确得多。</li>
+<li><strong>高精度：</strong> 它们的位置经过了复杂的优化（Bundle Adjustment，即 BA），通常比单个图像直接计算的坐标要准确得多。<h3 id="3-2-SfM-Points-在-3DGS-中的作用（Initialization）"><a href="#3-2-SfM-Points-在-3DGS-中的作用（Initialization）" class="headerlink" title="3.2 SfM Points 在 3DGS 中的作用（Initialization）"></a>3.2 SfM Points 在 3DGS 中的作用（Initialization）</h3>在 3DGS 流程图的<strong>初始化 (Initialization)</strong> 阶段，SfM Points 扮演了至关重要的“引导者”**角色：</li>
 </ul>
-<h3 id="3-2-SfM-Points-在-3DGS-中的作用（Initialization）"><a href="#3-2-SfM-Points-在-3DGS-中的作用（Initialization）" class="headerlink" title="3.2 SfM Points 在 3DGS 中的作用（Initialization）"></a>3.2 SfM Points 在 3DGS 中的作用（Initialization）</h3><p>在 3DGS 流程图的<strong>初始化 (Initialization)</strong> 阶段，SfM Points 扮演了至关重要的“引导者”**角色：</p>
 <ol>
 <li><strong>确定几何初始位置：</strong> 3DGS 训练的起点是需要有东西“放在” 3D 空间中。SfM Points 提供了初始的 3D 几何位置。</li>
 <li><strong>设置高斯球：</strong> 3DGS 初始化时，会为<strong>每一个 SfM Point</strong> 创建一个 3D 高斯球：<ul>
@@ -619,6 +745,8 @@
 
 
 
+
+  
 
   
 
