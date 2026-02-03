@@ -27,12 +27,14 @@
 <meta property="og:site_name" content="xhkzdepartedream">
 <meta property="og:description" content="[!info]author: xhkzdepartedreamdate: 2025.11.20  齐次坐标与变换矩阵1 如何理解雅可比矩阵 雅可比矩阵是对非线性变换的局部线性近似。  1.1 从一维线性化开始在一维函数里，如果你有$y &#x3D; f(x)$，在某个点 $x_0$ 处，你可以用泰勒展开近似它：$$f(x)\approx f(x_0) + f’(x_0) \cdot (x - x">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xhkzdepartedream.github.io/assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets-.png">
 <meta property="article:published_time" content="2025-11-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-29T05:56:51.479Z">
+<meta property="article:modified_time" content="2026-02-03T15:22:32.520Z">
 <meta property="article:author" content="xhkzdepartedream">
 <meta property="article:tag" content="topic&#x2F;计算机图形学&#x2F;三维视觉">
 <meta property="article:tag" content="type&#x2F;笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xhkzdepartedream.github.io/assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets-.png">
 
 <link rel="canonical" href="https://xhkzdepartedream.github.io/2025/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/">
 
@@ -190,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-01-29 13:56:51" itemprop="dateModified" datetime="2026-01-29T13:56:51+08:00">2026-01-29</time>
+                <time title="修改时间：2026-02-03 23:22:32" itemprop="dateModified" datetime="2026-02-03T23:22:32+08:00">2026-02-03</time>
               </span>
 
           
@@ -246,9 +248,9 @@
 <h3 id="3-2-概念辨析"><a href="#3-2-概念辨析" class="headerlink" title="3.2 概念辨析"></a>3.2 概念辨析</h3><p>模型变换 &#x2F; 世界变换：R旋转矩阵、S缩放矩阵、T平移矩阵，把<strong>物体的局部坐标系</strong>（比如高斯球的中心是(0,0,0)）变换到<strong>世界坐标系</strong>。<br>相机外参 &#x2F; 观测变换：V矩阵，相机站在世界的某个位置，朝某个方向看，把<strong>世界坐标系 → 相机坐标系</strong><br>相机内参 &#x2F; 投影变换：P矩阵，把<strong>相机坐标系 → 屏幕坐标系</strong>。有透视投影与正交投影两种，模拟了相机的成像。<br>对于3DGS：屏幕坐标&#x3D;高斯世界坐标×View矩阵×Projection矩阵×视口变换矩阵。</p>
 <h2 id="4-投影矩阵"><a href="#4-投影矩阵" class="headerlink" title="4 投影矩阵"></a>4 投影矩阵</h2><p>参考外部链接：[[图形学：正交_透视投影矩阵的推导（多个思路）]]</p>
 <h3 id="4-1-标准视体-NDC（Normalized-Device-Coordinates）"><a href="#4-1-标准视体-NDC（Normalized-Device-Coordinates）" class="headerlink" title="4.1 标准视体 NDC（Normalized Device Coordinates）"></a>4.1 标准视体 NDC（Normalized Device Coordinates）</h3><p>标准视体中的坐标就是标准设备坐标，其概念很明确清晰，简而言之就是将 $x$、$y$、$z$ 坐标都划分在 $[-1，1]$ 的区间范围内，框出一个直觉看起来就很“标准”的立方体空间。<br>在接下来的正交投影矩阵和透视投影矩阵，目的都是要将观察空间中的坐标转换成标准视体里的坐标。</p>
-<h3 id="4-2-正交投影"><a href="#4-2-正交投影" class="headerlink" title="4.2 正交投影"></a>4.2 正交投影</h3><p>![[assets- 3.png]]<br>如图，坐标轴原点的位置认为是观察者的位置，正交投影视体框定了一个空间区域，表示我们现在要渲染的是这个空间区域内的物体。其中正交投影视体的上下左右平面范围分别用 $t（top）$、$b（bottom）$、$l（left）$、$r（right)$ 表示。<br><strong>正交投影矩阵</strong>的目的就是将图2的正交投影视体变换到图1中的标准视体。<br>对于都是矩形体的正交投影视体和标准视体，两者之间的转换就十分简单：</p>
+<h3 id="4-2-正交投影"><a href="#4-2-正交投影" class="headerlink" title="4.2 正交投影"></a>4.2 正交投影</h3><p>![正交投影](assets&#x2F;计算机图形学前置知识&#x2F;assets- 3.png)<br>如图，坐标轴原点的位置认为是观察者的位置，正交投影视体框定了一个空间区域，表示我们现在要渲染的是这个空间区域内的物体。其中正交投影视体的上下左右平面范围分别用 $t（top）$、$b（bottom）$、$l（left）$、$r（right)$ 表示。<br><strong>正交投影矩阵</strong>的目的就是将图2的正交投影视体变换到图1中的标准视体。<br>对于都是矩形体的正交投影视体和标准视体，两者之间的转换就十分简单：</p>
 <p>首先是Scale变换：正交投影视体的 $（l，b，n）$ 对应于标准视体的 $（-1，-1, 1）$ $（r，t，f）$ 对应 $（1,1，-1)$ 。至于为什么 $n$ 对应1，而 $f$ 对应-1，这是因为 $x$ 和 $y$ 坐标的映射都是较大者为1，较小者为-1，在图2中， $n$ 在 $z$ 轴上比 $f$ 大，故映射为1。变换矩阵为：<br>$$<br>M_{Scale} &#x3D;  \left[  \begin{array}{1} \frac{2}{r-l}&amp;0&amp;0&amp;0\ 0&amp;\frac{2}{t-b}&amp;0&amp;0\ 0&amp;0&amp;\frac{2}{n-f}&amp;0\ 0&amp;0&amp;0&amp;1 \end{array} \right]<br>$$<br>其次是translation变换：将正交投影视体的几何中心 $(\frac{l+r}{2},\frac{b+t}{2},\frac{n+f}{2})$ 平移到 $(0,0,0)$ ，变换矩阵为：<br>$$<br>M_{Translation} &#x3D;  \left[  \begin{array}{1} 1&amp;0&amp;0&amp;-\frac{l+r}{2}\ 0&amp;1&amp;0&amp;-\frac{b+t}{2}\ 0&amp;0&amp;1&amp;-\frac{n+f}{2}\ 0&amp;0&amp;0&amp;1 \end{array} \right]<br>$$<br>所以最终的正交投影矩阵如下，其作用就是将正交投影视体变换为标准视体。<br>$$<br>\begin{align}<br>M_{Orthographic} &amp;&#x3D;  \left[  \begin{array}{1} \frac{2}{r-l}&amp;0&amp;0&amp;0\ 0&amp;\frac{2}{t-b}&amp;0&amp;0\ 0&amp;0&amp;\frac{2}{n-f}&amp;0\ 0&amp;0&amp;0&amp;1 \end{array} \right]   \left[  \begin{array}{1} 1&amp;0&amp;0&amp;-\frac{l+r}{2}\ 0&amp;1&amp;0&amp;-\frac{b+t}{2}\ 0&amp;0&amp;1&amp;-\frac{n+f}{2}\ 0&amp;0&amp;0&amp;1 \end{array} \right]\<br>&amp;&#x3D;\begin{bmatrix}\frac{2}{r-l}&amp;0&amp;0&amp;-\frac{r+l}{r-l} \ 0&amp;\frac{2}{t-b}&amp;0&amp;-\frac{t+b}{t-b}\ 0&amp;0&amp;\frac{2}{n-f}&amp;-\frac{n+f}{n-f}\ 0&amp;0&amp;0&amp;1\end{bmatrix}<br>\end{align}<br>$$</p>
-<h3 id="4-3-透视投影"><a href="#4-3-透视投影" class="headerlink" title="4.3 透视投影"></a>4.3 透视投影</h3><p>视锥体由原点O发散。<br>![[计算机图形学-ComputerGraphics&#x2F;assets&#x2F;计算机图形学前置知识&#x2F;assets- 1.png|475]]<br>透视投影推导如下：<br>我们要把相机前方的视锥体（frustum）里的点，映射到一个标准立方体 NDC（Normalized Device Coordinates）：$x, y, z \in [-1, 1]$，注意<strong>近平面为$z&#x3D;-n$，远平面为$z&#x3D;-f$</strong></p>
+<h3 id="4-3-透视投影"><a href="#4-3-透视投影" class="headerlink" title="4.3 透视投影"></a>4.3 透视投影</h3><p>视锥体由原点O发散。<br>![透视投影](assets&#x2F;计算机图形学前置知识&#x2F;assets- 1.png)<br>透视投影推导如下：<br>我们要把相机前方的视锥体（frustum）里的点，映射到一个标准立方体 NDC（Normalized Device Coordinates）：$x, y, z \in [-1, 1]$，注意<strong>近平面为$z&#x3D;-n$，远平面为$z&#x3D;-f$</strong></p>
 <ol>
 <li>透视的核心：近大远小<br>对于任意一个点 $P&#x3D;(x_e, y_e, z_e)$（相机坐标系下）：<br>在近平面上的投影点 $(x_p, y_p)$ 满足相似三角形：<br>$$<br>x_p &#x3D; \frac{-n}{z_e}x_e , y_p &#x3D; \frac{-n}{z_e}y_e<br>$$<br>这里的负号是因为 $z_e &lt; 0$（相机看向 $-z$）。</li>
 <li>映射到 [-1,1] 的 x, y<br>近平面的 x 范围是 $[l, r]$，y 范围是 $[b, t]$。<br>我们要让投影后：<br>$$<br>\begin{align}<br>x_{ndc} &#x3D; -1 \quad \text{当} \quad x_p &#x3D; l\<br>x_{ndc} &#x3D; 1 \quad \text{当} \quad x_p &#x3D; r<br>\end{align}<br>$$<br>所以：<br>$$<br>x_{ndc} &#x3D; \frac{2x_p}{r-l} - \frac{r+l}{r-l}<br>$$<br>代入 $x_p &#x3D; \frac{-n}{z_e} x_e$：<br>$$<br>x_{ndc} &#x3D; \frac{-2n}{(r-l) z_e} x_e - \frac{r+l}{r-l}<br>$$<br>其实这里已经出现了 $1&#x2F;z_e$，这正是透视投影需要的“非线性”部分，稍后我们用齐次坐标处理它。<br>同理 y：<br>$$<br>y_{ndc} &#x3D; \frac{-2n}{(t-b) z_e} y_e - \frac{t+b}{t-b}<br>$$</li>
@@ -273,7 +275,7 @@
 <li><strong>像素横坐标：</strong> $u &#x3D; \frac{u’}{w’} &#x3D; \frac{f_x X}{Z} + c_x$</li>
 <li><strong>像素纵坐标：</strong> $v &#x3D; \frac{v’}{w’} &#x3D; \frac{f_y Y}{Z} + c_y$</li>
 </ul>
-<h2 id="5-对极几何与三角化"><a href="#5-对极几何与三角化" class="headerlink" title="5 对极几何与三角化"></a>5 对极几何与三角化</h2><h3 id="5-1-本质矩阵与基础矩阵"><a href="#5-1-本质矩阵与基础矩阵" class="headerlink" title="5.1 本质矩阵与基础矩阵"></a>5.1 本质矩阵与基础矩阵</h3><p>意义：只要两台相机就可以确定一个点在世界坐标系下的坐标位置<br>![[计算机图形学-ComputerGraphics&#x2F;assets&#x2F;计算机图形学前置知识&#x2F;assets-.png]]<br>给定两个相机中心 $C_1$、$C_2$ 与一个 3D 点 $X$，三点共面，所确定的平面称为<strong>对极平面</strong>（Epipolar Plane）。<br>设两相机坐标系之间的变换为 $[R \mid T]$，其中 $R$ 为旋转矩阵，$T$ 为从第一相机坐标系到第二相机坐标系的平移向量。对于第一相机坐标系中的点 $p$，其在第二相机坐标系中的坐标为：<br>$$<br>p’ &#x3D; R p + T<br>$$<br>对等式两边左叉乘 $T$，得：<br>$$<br>T \times p’ &#x3D; T \times (R p + T) &#x3D; T \times R p + T \times T &#x3D; T \times R p<br>$$<br>因为 $T \times T &#x3D; 0$。注意到 $T \times p’$ 垂直于对极平面，即为该平面的法向量。又因 $p’$ 位于该平面上，故 $p’$ 与法向量正交：<br>$$<br>p’^{\top} (T \times R p) &#x3D; 0<br>$$<br>利用叉积与反对称矩阵的关系：对任意向量 $a$，有 $b \times a &#x3D; [b]<em>\times a$，其中 $[b]</em>\times$ 是 $b$ 的反对称矩阵。定义 $S &#x3D; [T]_\times$，即：<br>$$<br>S &#x3D; \begin{bmatrix}<br>0 &amp; -T_z &amp; T_y \<br>T_z &amp; 0 &amp; -T_x \<br>-T_y &amp; T_x &amp; 0<br>\end{bmatrix}<br>$$<br>则 $T \times R p &#x3D; S R p$，代入上式得：<br>$$<br>p’^{\top} S R p &#x3D; 0<br>$$</p>
+<h2 id="5-对极几何与三角化"><a href="#5-对极几何与三角化" class="headerlink" title="5 对极几何与三角化"></a>5 对极几何与三角化</h2><h3 id="5-1-本质矩阵与基础矩阵"><a href="#5-1-本质矩阵与基础矩阵" class="headerlink" title="5.1 本质矩阵与基础矩阵"></a>5.1 本质矩阵与基础矩阵</h3><p>意义：只要两台相机就可以确定一个点在世界坐标系下的坐标位置<br><img src="/assets/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/assets-.png" alt="对极几何"><br>给定两个相机中心 $C_1$、$C_2$ 与一个 3D 点 $X$，三点共面，所确定的平面称为<strong>对极平面</strong>（Epipolar Plane）。<br>设两相机坐标系之间的变换为 $[R \mid T]$，其中 $R$ 为旋转矩阵，$T$ 为从第一相机坐标系到第二相机坐标系的平移向量。对于第一相机坐标系中的点 $p$，其在第二相机坐标系中的坐标为：<br>$$<br>p’ &#x3D; R p + T<br>$$<br>对等式两边左叉乘 $T$，得：<br>$$<br>T \times p’ &#x3D; T \times (R p + T) &#x3D; T \times R p + T \times T &#x3D; T \times R p<br>$$<br>因为 $T \times T &#x3D; 0$。注意到 $T \times p’$ 垂直于对极平面，即为该平面的法向量。又因 $p’$ 位于该平面上，故 $p’$ 与法向量正交：<br>$$<br>p’^{\top} (T \times R p) &#x3D; 0<br>$$<br>利用叉积与反对称矩阵的关系：对任意向量 $a$，有 $b \times a &#x3D; [b]<em>\times a$，其中 $[b]</em>\times$ 是 $b$ 的反对称矩阵。定义 $S &#x3D; [T]_\times$，即：<br>$$<br>S &#x3D; \begin{bmatrix}<br>0 &amp; -T_z &amp; T_y \<br>T_z &amp; 0 &amp; -T_x \<br>-T_y &amp; T_x &amp; 0<br>\end{bmatrix}<br>$$<br>则 $T \times R p &#x3D; S R p$，代入上式得：<br>$$<br>p’^{\top} S R p &#x3D; 0<br>$$</p>
 <blockquote>
 <p>[!important]<br>令本质矩阵 $E &#x3D; S R&#x3D;T \times R$，最终得到对极约束：<br>$$<br>p’^{\top} E p &#x3D; 0<br>$$<br>这个$E$就是<strong>本质矩阵</strong>。</p>
 </blockquote>
